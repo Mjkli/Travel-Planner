@@ -1,5 +1,4 @@
 class Location:
-    name = None
 
     def __init__(self):
         self.name = None
@@ -15,8 +14,11 @@ class Location:
     def nlocation(self, Location):
         self.nextLocation = Location
 
+    def setname(self, name):
+        self.name = name
 
-numlocations = int(input("How many locations do you want to travel to?\n"))
+
+numlocations = int(input("How many locations do you want to travel to?\n")) + 1
 
 
 locations = [Location() for i in range(numlocations)]
@@ -28,8 +30,6 @@ for i in range(numlocations):
     else:
         print("What is the " + str(i) + " place?")
 
-    locations[i].name = input()
+    locations[i].setname(input())
 
 
-for i in range(numlocations):
-    print(Location.name + "\n" + Location.nextLocation + "\n")
