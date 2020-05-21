@@ -4,7 +4,8 @@ from functools import partial
 from geopy.geocoders import Nominatim
 
 geolocator = Nominatim(user_agent="Testing_app")
-geocode = partial(geolocator.geocode , language="es")
+geocode = partial(geolocator.geocode, language="en")
+
 
 def getLocation(string):
-    print(geocode(string))
+    return geocode(string)
