@@ -8,4 +8,5 @@ geocode = partial(geolocator.geocode, language="en")
 
 
 def getLocation(string):
-    return geocode(string)
+    location = geolocator.geocode(string)
+    name = location.address

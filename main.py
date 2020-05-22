@@ -6,10 +6,10 @@ from flights import flightLookup
 class Location:
 
     def __init__(self):
-        self.name = None
-
-    def setname(self, name):
-        self.name = name
+        self.city = None
+        self.county = None
+        self.State = None
+        self.country = None
 
 
 def getDates(date1, date2):
@@ -42,11 +42,11 @@ for i in range(numlocations):
     else:
         print("What is the " + str(i) + " place? (city,country)")
 
-    locations[i].setname(getLocation(input()))
+    getLocation(input())
 
 for i in range(numlocations):
-    print(locations[i].name)
-
+    print(locations[i].city)
+"""
 print("How Many Adults are going?")
 numAdults = int(input())
 if numAdults > 8:
@@ -57,3 +57,4 @@ arriveDate = 0
 getDates(departdate, arriveDate)
 
 print(flightLookup(locations[0], locations[1], departdate, arriveDate, numAdults))
+"""
