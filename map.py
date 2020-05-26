@@ -9,4 +9,9 @@ geocode = partial(geolocator.geocode, language="en")
 
 def getLocation(string):
     location = geolocator.geocode(string)
-    name = location.address
+    temp = ""
+    for i in location.address:
+        if i == ',':
+            return temp
+        else:
+            temp += i
