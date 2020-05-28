@@ -14,7 +14,9 @@ class Location:
         self.airport = None
 
 
-def getDates(date1, date2):
+def getDates():
+    global departdate
+    global arriveDate
     print("What year are you leaving?")
     departyear = int(input())
     print("what is the month?")
@@ -22,10 +24,10 @@ def getDates(date1, date2):
     print("what is the day?")
     departday = int(input())
 
-    date1 = date(departyear, departmonth, departday)
+    departdate = date(departyear, departmonth, departday)
 
     print("How Long is your trip?(days)")
-    time = int(input()) + departday
+    time = int(input()) + departday - 1
     arrivemonth = departmonth
     arriveyear = departyear
 
@@ -33,11 +35,11 @@ def getDates(date1, date2):
         arrivemonth += 1
         time -= 30
 
-    date2 = date(arriveyear, arrivemonth, time)
+    arriveDate = date(arriveyear, arrivemonth, time)
+    print(arriveDate)
 
 
 numlocations = int(input("How many locations do you want to travel to?\n")) + 1
-#numlocations = 1
 
 
 locations = [Location() for i in range(numlocations)]
@@ -59,15 +61,14 @@ numAdults = int(input())
 if numAdults > 8:
     numAdults = 8
 
-numAdults = 1
 departdate = 0
 arriveDate = 0
-getDates(departdate, arriveDate)
+getDates()
 
 for i in range(locations.__len__()):
     locations[i].airport = locationLookup(locations[i].city)
 
 
-print(flightLookup(locations[1].airport, locations[0].airport, departdate, arriveDate, numAdults))
-
+print(flighttake2(locations[0].airport, locations[1].airport, departdate))
+print(flighttake2(locations[1].airport, locations[0].airport, arriveDate))
 
