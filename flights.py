@@ -5,7 +5,7 @@ from skyscanner.skyscanner import Flights
 from skyscanner.skyscanner import FlightsCache
 import json
 
-flights_service = Flights('4514fef5c4mshcc9b62cf94b5e59p151d73jsn4fe875a542d7')
+flights_service = Flights('API_KEY')
 
 
 
@@ -16,7 +16,7 @@ def locationLookup(location):
 
     headers = {
         'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-        'x-rapidapi-key': "4514fef5c4mshcc9b62cf94b5e59p151d73jsn4fe875a542d7"
+        'x-rapidapi-key': "API_KEY"
     }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -31,7 +31,7 @@ def flightLookup(origin, destination, outdate):
 
     headers = {
         'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-        'x-rapidapi-key': "4514fef5c4mshcc9b62cf94b5e59p151d73jsn4fe875a542d7"
+        'x-rapidapi-key': "API_KEY"
     }
 
     response = requests.request("GET", url, headers=headers)
