@@ -3,14 +3,10 @@ from datetime import date
 from flights import *
 
 
-
 class Location:
 
     def __init__(self):
         self.city = None
-        self.county = None
-        self.State = None
-        self.country = None
         self.airport = None
 
 
@@ -69,6 +65,8 @@ for i in range(locations.__len__()):
     locations[i].airport = locationLookup(locations[i].city)
 
 
-print(flighttake2(locations[0].airport, locations[1].airport, departdate))
-print(flighttake2(locations[1].airport, locations[0].airport, arriveDate))
+leg1 = int(flightLookup(locations[0].airport, locations[1].airport, departdate))
+leg2 = int(flightLookup(locations[1].airport, locations[0].airport, arriveDate))
+
+print("First leg = " + str(leg1) + "\nSecond leg = " + str(leg2) + "\nTotal = " + str(leg1 + leg2))
 
