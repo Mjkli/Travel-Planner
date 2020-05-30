@@ -34,4 +34,8 @@ def flightLookup(origin, destination, outdate):
 
     js = json.loads(response.text)
 
-    return js['Quotes'][0]['MinPrice']
+    if js['Quotes']:
+        return js['Quotes'][0]['MinPrice']
+    else:
+        print("Error! No route from " + origin + " to " + destination + " date: " + str(outdate))
+        return 0

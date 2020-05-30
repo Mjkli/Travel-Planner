@@ -1,3 +1,6 @@
+#need config.py to hold apikey
+
+
 from map import getLocation
 from datetime import date
 from flights import *
@@ -8,6 +11,7 @@ class Location:
     def __init__(self):
         self.city = None
         self.airport = None
+        self.outPrice = 0
 
 
 def getDates():
@@ -65,8 +69,15 @@ for i in range(locations.__len__()):
     locations[i].airport = locationLookup(locations[i].city)
 
 
-leg1 = int(flightLookup(locations[0].airport, locations[1].airport, departdate))
-leg2 = int(flightLookup(locations[1].airport, locations[0].airport, arriveDate))
+total = 0
+for i in range(len(locations)):
+    if i == len(locations) - 1:
+        locations[i].outPrice = int(flightLookup(locations[i].airport, locations[0].airport, departdate))
+    else:
+        locations[i].outPrice = int(flightLookup(locations[i].airport, locations[i + 1].airport, departdate))
+    total += locations[i].outPrice
+    print(locations[i].city + ": " + str(locations[i].outPrice))
 
-print("First leg = " + str(leg1) + "\nSecond leg = " + str(leg2) + "\nTotal = " + str(leg1 + leg2))
+print("total price: " + str(total))
+
 
