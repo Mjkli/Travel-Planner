@@ -1,10 +1,11 @@
-# skyscanner flight look up
+# Skyscanner flight look up
 
 import requests
 import json
 import config
 
 
+# Get the (Generic) airport for the specified location
 def locationLookup(location):
     url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/"
 
@@ -20,6 +21,7 @@ def locationLookup(location):
     return js['Places'][0]['PlaceId']
 
 
+# Get flight pricing for starting location to destination at specified date
 def flightLookup(origin, destination, outdate):
     url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-USD/"
     url += origin + "/" + destination + "/" + str(outdate)

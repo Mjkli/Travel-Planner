@@ -42,10 +42,12 @@ def getDates(locations):
             locations[i].outDate = departdate
 
 
+# get number of locations from user ( + 1 for the starting locations)
 numlocations = int(input("How many locations do you want to travel to?\n")) + 1
 
 locations = [Location() for i in range(numlocations)]
 
+# Get locations from user
 for i in range(numlocations):
     if i == 0:
         print("What is your starting location? (city)")
@@ -54,9 +56,7 @@ for i in range(numlocations):
 
     locations[i].city = input()
 
-for i in range(numlocations):
-    print(locations[i].city)
-
+# Get number of Adults
 print("How Many Adults are going?")
 numAdults = int(input())
 if numAdults > 8:
@@ -77,6 +77,6 @@ for i in range(len(locations)):
     else:
         locations[i].outPrice = int(flightLookup(locations[i].airport, locations[i + 1].airport, locations[i].outDate))
     total += locations[i].outPrice
-    print(locations[i].city + ": " + str(locations[i].outPrice) + " : " + str(locations[i].outDate))
+    print(locations[i].city + " : $" + str(locations[i].outPrice) + " : " + str(locations[i].outDate))
 
 print("total price: " + str(total))
